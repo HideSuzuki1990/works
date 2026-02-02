@@ -159,29 +159,12 @@
 
   <main>
     <article class="video-card">
-      <div class="video-wrapper" data-video-id="cLihSwJbTdQ">
-        <img src="https://img.youtube.com/vi/cLihSwJbTdQ/hqdefault.jpg" alt="Video thumbnail" />
-        <div class="play-button"></div>
-      </div>
-      <div class="video-content">
-        <h2>ルセナ vs. 烏丸 PV</h2>
-        <p>チェス配信者と強豪プレーヤーの対局イベントのPVです。両プレーヤーに加え実況解説の2人にもインタビューしまとめたものです。1~2時間のインタビュー素材4つを10分の動画にまとめました。</p>
-        <div class="authors">
-          <div class="author">
-            <img src="01.jpg" alt="Author icon" />
-            <span>HideSuzuki</span>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="video-card">
       <div class="video-wrapper" data-video-id="6uJFceAqKKg">
         <img src="https://img.youtube.com/vi/6uJFceAqKKg/hqdefault.jpg" alt="Video thumbnail" />
         <div class="play-button"></div>
       </div>
       <div class="video-content">
-        <h2>2023年アジア大会 小島慎也さんインタビュー</h2>
+        <h2>小島慎也さんインタビュー</h2>
         <p>2023年アジア大会に日本代表として出場された小島慎也さんのインタビュー動画です。約1時間のインタビュー素材を10分の動画にまとめました。イントロの3DCGはblenderで作成しています。</p>
         <div class="authors">
           <div class="author">
@@ -198,7 +181,7 @@
         <div class="play-button"></div>
       </div>
       <div class="video-content">
-        <h2>2023年アジア大会 山田弘平さんインタビュー</h2>
+        <h2>山田弘平さんインタビュー</h2>
         <p>2023年アジア大会に日本代表として出場された山田弘平さんのインタビュー動画です。約1時間のインタビュー素材を10分の動画にまとめました。イントロの3DCGはblenderで作成しています。</p>
         <div class="authors">
           <div class="author">
@@ -215,7 +198,7 @@
         <div class="play-button"></div>
       </div>
       <div class="video-content">
-        <h2>全日本チェス選手権2024 PV</h2>
+        <h2>全日本チェス選手権PV</h2>
         <p>全日本チェス選手権2024のPVです。各選手の写真と団体ロゴを使用して制作しました。3DCGはblenderで作成し、音声をaviutlで統合しました。</p>
         <div class="authors">
           <div class="author">
@@ -225,6 +208,58 @@
         </div>
       </div>
     </article>
+
+    <article class="video-card">
+      <div class="video-wrapper" data-video-id="rgwHTJcOYME" data-start="451">
+        <img src="https://img.youtube.com/vi/rgwHTJcOYME/hqdefault.jpg" alt="Video thumbnail" />
+        <div class="play-button"></div>
+      </div>
+      <div class="video-content">
+        <h2>選手紹介クリップ</h2>
+        <p>チェスオリンピアード2024の中継配信で、当日対局する選手を紹介するショートクリップです（7:31〜）。3DCGはblenderで作成し、音声をaviutlで統合しました。</p>
+        <div class="authors">
+          <div class="author">
+            <img src="01.jpg" alt="Author icon" />
+            <span>HideSuzuki</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="video-card">
+      <div class="video-wrapper" data-video-id="u0L3wsTaNrE">
+        <img src="https://img.youtube.com/vi/u0L3wsTaNrE/hqdefault.jpg" alt="Video thumbnail" />
+        <div class="play-button"></div>
+      </div>
+      <div class="video-content">
+        <h2>メンバーシップCM</h2>
+        <p>日本チェス連盟公式YouTubeチャンネルの、メンバーシップを紹介する動画です。メンバーシップの概要、講座の内容などを解説しています。</p>
+        <div class="authors">
+          <div class="author">
+            <img src="01.jpg" alt="Author icon" />
+            <span>HideSuzuki</span>
+          </div>
+        </div>
+      </div>
+    </article>
+    
+    <article class="video-card">
+      <div class="video-wrapper" data-video-id="cLihSwJbTdQ">
+        <img src="https://img.youtube.com/vi/cLihSwJbTdQ/hqdefault.jpg" alt="Video thumbnail" />
+        <div class="play-button"></div>
+      </div>
+      <div class="video-content">
+        <h2>ルセナ vs. 烏丸 PV</h2>
+        <p>チェス配信者と強豪プレーヤーの対局イベントのPVです。両プレーヤーに加え実況解説の2人にもインタビューしまとめたものです。1~2時間のインタビュー素材4つを10分の動画にまとめました。</p>
+        <div class="authors">
+          <div class="author">
+            <img src="01.jpg" alt="Author icon" />
+            <span>HideSuzuki</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
   </main>
 
   <footer>© 2026 HideSuzuki</footer>
@@ -233,14 +268,24 @@
     document.querySelectorAll('.video-wrapper').forEach(wrapper => {
       wrapper.addEventListener('click', () => {
         const videoId = wrapper.dataset.videoId;
+        const start = wrapper.dataset.start;
+        const end = wrapper.dataset.end;
+    
+        let src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    
+        if (start) src += `&start=${start}`;
+        if (end) src += `&end=${end}`;
+    
         const iframe = document.createElement('iframe');
-        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        iframe.src = src;
         iframe.title = 'YouTube video player';
         iframe.frameBorder = '0';
-        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allow =
+          'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
         iframe.allowFullscreen = true;
         iframe.style.width = '100%';
         iframe.style.height = '100%';
+    
         wrapper.innerHTML = '';
         wrapper.appendChild(iframe);
       });
